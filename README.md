@@ -15,7 +15,7 @@ Aliddns for  RouterOS
 :local pppoe "XXXX"  //xxxx处替换为网络出口名称，如pppoe-out1  
 :local IpAddr [/ip address get [/ip address find interface=$pppoe] address]  
 :set IpAddr [:pick $IpAddr 0 ([len $IpAddr] -3)]  
-:local aliddns "http://服务器IP:50020/aliddns?AccessKeyID=$AccessKeyID&AccessKeySecret=$AccessKeySecret&RR=$RR&DomainName=$DomainName&IpAddr=$IpAddr"  
+:local aliddns "http://服务器IP:8800/aliddns?AccessKeyID=$AccessKeyID&AccessKeySecret=$AccessKeySecret&RR=$RR&DomainName=$DomainName&IpAddr=$IpAddr"  
 :local result [/tool fetch url=("$aliddns")  mode=http http-method=get     as-value output=user];  
 
 :if ($result->"status" = "finished") do={  
